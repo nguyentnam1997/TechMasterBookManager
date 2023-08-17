@@ -83,8 +83,7 @@ public class BookServiceImpl implements IServiceLibrary<Book> {
         do {
             int choose;
             count = 0;
-            System.out.println("Choose the option you want to delete the book:");
-            choose = checkValidInt(scanner);
+            choose = checkValidInt(scanner, "Choose the option you want to delete the book:");
             if (choose == 0) continue;
             else if (choose > 4 || choose < 1) {
                 System.out.println("Outside the allowed range, please try again!");
@@ -92,11 +91,10 @@ public class BookServiceImpl implements IServiceLibrary<Book> {
             }
             switch (choose) {
                 case 1 -> {
-                    deleteBookById(scanner, count, listBook);
+                    deleteById(scanner, count, listBook);
                 }
                 case 2 -> {
-                    String deleteForName = scanner.nextLine();
-                    deleteBookByName(count, deleteForName, listBook);
+                    deleteByName(scanner, count, listBook);
                 }
                 case 3 -> {
                     String deleteForTopic = scanner.nextLine();
@@ -111,9 +109,10 @@ public class BookServiceImpl implements IServiceLibrary<Book> {
         }
         while (true);
     }
-    public int checkValidInt(Scanner scanner) {
+    public int checkValidInt(Scanner scanner, String message) {
         int intCheck = 0;
             try {
+                System.out.println(message);
                 intCheck = Integer.parseInt(scanner.nextLine());
             }
             catch (Exception e) {
@@ -121,11 +120,12 @@ public class BookServiceImpl implements IServiceLibrary<Book> {
             }
         return intCheck;
     }
-    public void deleteBookById(Scanner scanner, int count, ArrayList<Book> listBook) {
+
+    @Override
+    public void deleteById(Scanner scanner, int count, ArrayList<Book> listBook) {
         do {
             int deleteById;
-            System.out.println("Type the ID want to delete:");
-            deleteById = checkValidInt(scanner);
+            deleteById = checkValidInt(scanner, "Type the ID want to delete:");
             if (deleteById == 0) continue;
             else {
                 for (Book bookDelete : listBook) {
@@ -145,17 +145,22 @@ public class BookServiceImpl implements IServiceLibrary<Book> {
         }
         while (true);
     }
-    public void deleteBookByName(int count, String deleteByName, ArrayList<Book> listBook) {
-        System.out.println("Type the name want to delete:");
-        for (Book bookDelete : listBook) {
-            if (bookDelete.getName().equalsIgnoreCase(deleteByName)) {
-                listBook.remove(bookDelete);
-                count++;
+    public void deleteByName(Scanner scanner, int count, ArrayList<Book> listBook) {
+        do {
+            System.out.println("Type the name want to delete:");
+            String deleteByName = scanner.nextLine();
+            for (Book bookDelete : listBook) {
+                if (bookDelete.getName().equalsIgnoreCase(deleteByName)) {
+                    listBook.remove(bookDelete);
+                    count++;
+                    break;
+                }
+            }
+            if (count == 0) {
+                System.out.println("No book with this name exists");
             }
         }
-        if (count == 0) {
-            System.out.println("No book with this name exists");
-        }
+        while (true);
     }
     public void deleteBookByTopic(int count, String deleteByTopic, ArrayList<Book> listBook) {
         System.out.println("Type the topic want to delete:");
