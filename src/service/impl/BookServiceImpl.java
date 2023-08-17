@@ -83,7 +83,7 @@ public class BookServiceImpl implements IServiceLibrary<Book> {
         do {
             int choose;
             count = 0;
-            choose = checkValidInt(scanner, "Choose the option you want to delete the book:");
+            choose = checkIntInput(scanner, "Choose the option you want to delete the book:");
             if (choose == 0) continue;
             else if (choose > 4 || choose < 1) {
                 System.out.println("Outside the allowed range, please try again!");
@@ -109,7 +109,7 @@ public class BookServiceImpl implements IServiceLibrary<Book> {
         }
         while (true);
     }
-    public int checkValidInt(Scanner scanner, String message) {
+    public int checkIntInput(Scanner scanner, String message) {
         int intCheck = 0;
             try {
                 System.out.println(message);
@@ -125,7 +125,7 @@ public class BookServiceImpl implements IServiceLibrary<Book> {
     public void deleteById(Scanner scanner, int count, ArrayList<Book> listBook) {
         do {
             int deleteById;
-            deleteById = checkValidInt(scanner, "Type the ID want to delete:");
+            deleteById = checkIntInput(scanner, "Type the ID want to delete:");
             if (deleteById == 0) continue;
             else {
                 for (Book bookDelete : listBook) {
