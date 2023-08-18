@@ -51,15 +51,4 @@ public class Book {
     public void setCountBook(int countBook) {
         this.countBook = countBook;
     }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", topic='" + topic + '\'' +
-                ", author='" + author + '\'' +
-                ", countBook=" + countBook +
-                '}';
-    }
 }

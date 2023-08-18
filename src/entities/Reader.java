@@ -4,13 +4,13 @@ public class Reader {
     private static int autoId;
     private int id;
     private String name;
-    private int phoneNumber;
+    private int numberPhone;
     private String address;
 
-    public Reader(String name, int phoneNumber, String address) {
+    public Reader(String name, int numberPhone, String address) {
         this.id = ++autoId;
         this.name = name;
-        this.phoneNumber = phoneNumber;
+        this.numberPhone = numberPhone;
         this.address = address;
     }
 
@@ -26,12 +26,12 @@ public class Reader {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public int getNumberPhone() {
+        return numberPhone;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setNumberPhone(int numberPhone) {
+        this.numberPhone = numberPhone;
     }
 
     public String getAddress() {
@@ -40,15 +40,5 @@ public class Reader {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return "Reader{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", address='" + address + '\'' +
-                '}';
     }
 }
