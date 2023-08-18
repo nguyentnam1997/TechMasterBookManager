@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public interface IServiceLibrary<T> {
 
-    T insert(ArrayList<T> list, Scanner scanner);
-    void edit(T t, Scanner scanner);
+    void insert(ArrayList<T> list, Scanner scanner);
+    void edit(ArrayList<T> list, Scanner scanner);
     void delete(ArrayList<T> list, Scanner scanner);
 }
